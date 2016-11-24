@@ -1,0 +1,7 @@
+# Elastic Beanstalk Files.elasticbeanstalk/*!.elasticbeanstalk/*.cfg.yml!.elasticbeanstalk/*.global.ymlenv/*# Elastic Beanstalk Files.elasticbeanstalk/*!.elasticbeanstalk/*.cfg.yml!.elasticbeanstalk/*.global.ymlkeys.py
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+!key.py
+!api_key.txt

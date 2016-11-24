@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Time Tweets</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='mapapi.js') }}"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC86HIdZMLOizx1KgVDg0cweRRUhX6cwgg&callback=initMap">
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color:#C9C9C9 ;
+            color: #333;
+        }
+    </style>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('newTweet', function(msg) {
+        console.log(msg);
+        plotlatlng(msg.lat,msg.lng,msg.sentiment);
+    });
+    </script>
+
+</head>
+<body>
+    <div id = 'header'>
+            <div id='title'>
+                <h2>Real-Time Tweet Location with Sentiment</h2>
+            </div>
+        <div id='search'>
+            <form action="/search" method="post">
+                <input type="text" name = 'search' placeholder="Search Term">
+            </form>
+        </div>
+    </div>
+    <div id ='map'></div>
+</body>
+</html>
